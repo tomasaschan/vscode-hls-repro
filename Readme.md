@@ -2,7 +2,7 @@
 
 1. Ensure the URL in `.devcontainers/Dockerfile` points to the VSIX you want to test.
 
-1. Open this folder using VS Code Remote - Containers. VS Code will build the container for you, which includes downloading the VSIX into the image.
+1. Open this folder using [VS Code Remote - Containers](https://code.visualstudio.com/docs/remote/containers). VS Code will build the container for you, which includes downloading the VSIX into the image.
 
 1. Once the window has reloaded and connected to the container, open the Command Palette and choose `Extensions: Install from VSIX...`
 
