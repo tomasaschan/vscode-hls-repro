@@ -13,4 +13,3 @@ library:
   dependencies:
     - base
     - containers
-    - PSQueue

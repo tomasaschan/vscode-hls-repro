@@ -1,8 +1,15 @@
-FROM ubuntu:20.04
+FROM docker.pkg.github.com/tomasaschan/vscode-devcontainers/haskell:0.1
 
-RUN apt-get update && apt-get install -y unzip
+USER root
 
-ADD https://github.com/haskell/haskell-language-server/files/4819805/vscode-hie-server-0.0.40.vsix.zip /vsix/
+RUN apt-get update && apt-get install -y unzip libncurses-dev libtinfo5
 
-RUN unzip /vsix/vscode-hie-server-0.0.40.vsix.zip -d /vsix && \
-    rm /vsix/vscode-hie-server-0.0.40.vsix.zip
+ARG HIE_VSIX_URL=https://github.com/haskell/haskell-language-server/files/4871220/vscode-hie-server-0.1.0.vsix.zip
+
+RUN mkdir /vsix && \
+    curl -sL ${HIE_VSIX_URL} -o /vsix/vscode-hie-server.vsix.zip && \
+    unzip /vsix/vscode-hie-server.vsix.zip -d /vsix && \
+    rm /vsix/vscode-hie-server.vsix.zip && \
+    mv /vsix/vscode-hie-server-*.vsix /vsix/vscode-hie-server.vsix
+
+USER dev
